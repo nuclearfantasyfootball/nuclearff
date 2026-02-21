@@ -48,9 +48,7 @@ replace_player_names <- function(df, player_col = "player") {
         TRUE ~ stringr::str_replace_all(!!player_col_sym, "'", "") %>%
           stringr::str_replace_all("\\b([A-Z])\\.", "\\1") %>%
           stringr::str_replace_all("\\s+", " ") %>%
-          stringr::str_trim(),
-        # Leave all other names unchanged
-        TRUE ~ !!player_col_sym
+          stringr::str_trim()
       )
     )
 }

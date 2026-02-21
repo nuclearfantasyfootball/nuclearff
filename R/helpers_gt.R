@@ -42,7 +42,7 @@ get_scoring_columns <- function(scoring = NULL) {
 
   # Check if `scoring` is NULL or missing, and assign a default if so
   if (is.null(scoring)) {
-    paste("No scoring format defined. Default to PPR 6PT PASS TD")
+    message("No scoring format defined. Default to PPR 6PT PASS TD")
     scoring <- "ppr_6pt_td"  # Default scoring format
   }
 
@@ -111,7 +111,7 @@ get_scoring_format <- function(scoring = NULL, position = NULL) {
 
   # Check if `scoring` is NULL or missing, and assign a default if so
   if (is.null(scoring)) {
-    paste("No scoring format defined. Default to PPR 6PT PASS TD")
+    message("No scoring format defined. Default to PPR 6PT PASS TD")
     scoring <- "ppr_6pt_td"  # Default scoring format
   }
 
@@ -137,7 +137,7 @@ get_scoring_format <- function(scoring = NULL, position = NULL) {
   }
 
   # Only apply the QB-specific logic if position is QB
-  if (position == "QB") {
+  if (!is.null(position) && position == "QB") {
     if (endsWith(scoring, "4pt_td")) {
       format <- paste(format, "4PT PASS TD")
     } else if (endsWith(scoring, "6pt_td")) {

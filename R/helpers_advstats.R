@@ -40,7 +40,7 @@
 #'
 #' @export
 validate_ngs_season <- function(season) {
-  if (!is.numeric(season) || any(season <= 2016)) {
+  if (!is.numeric(season) || any(season < 2016)) {
     stop("Please provide a valid season as an integer (2016 or later).")
   }
 }
@@ -79,7 +79,7 @@ validate_ngs_season <- function(season) {
 #'
 #' @export
 validate_pfr_season <- function(season) {
-  if (!is.numeric(season) || any(season <= 2018)) {
+  if (!is.numeric(season) || any(season < 2018)) {
     stop("Please provide a valid season as an integer (2018 or later).")
   }
 }

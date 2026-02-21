@@ -61,7 +61,7 @@ validate_pbp_db <- function(pbp_db,
 #'
 #' @export
 validate_pbp_season <- function(season) {
-  if (!is.numeric(season) || any(season <= 1999)) {
+  if (!is.numeric(season) || any(season < 1999)) {
     stop("Please provide a valid season as an integer (1999 or later).")
   }
 }
@@ -152,7 +152,7 @@ load_data_from_db <- function(pbp_db, pbp_db_tbl, season, week_min, week_max) {
       season %in% !!season,
       (is.null(week_max) & !!rlang::sym("week") >= !!week_min) |
         (!is.null(week_max) & !!rlang::sym("week") >= !!week_min &
-           !!sym("week") <= !!week_max)
+           !!rlang::sym("week") <= !!week_max)
     ) %>%
     dplyr::collect()
 
@@ -203,7 +203,7 @@ load_data_from_nflreadr <- function(season, week_min, week_max) {
       season %in% !!season,
       (is.null(week_max) & !!rlang::sym("week") >= !!week_min) |
         (!is.null(week_max) & !!rlang::sym("week") >= !!week_min &
-           !!sym("week") <= !!week_max)
+           !!rlang::sym("week") <= !!week_max)
     )
 
   return(pbp)
