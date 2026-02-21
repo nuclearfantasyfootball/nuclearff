@@ -61,7 +61,7 @@ validate_pbp_db <- function(pbp_db,
 #'
 #' @export
 validate_pbp_season <- function(season) {
-  if (!is.numeric(season) || any(season <= 1999)) {
+  if (!is.numeric(season) || any(season < 1999)) {
     stop("Please provide a valid season as an integer (1999 or later).")
   }
 }
