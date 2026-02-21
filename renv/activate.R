@@ -553,6 +553,7 @@ local({
       if (!is.na(envval))
         return(envval)
     }
+    ""
   }
   
   renv_bootstrap_download_github <- function(version) {
